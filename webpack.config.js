@@ -37,7 +37,7 @@ module.exports = {
           // Include accepts either a path or an array of paths. If include isn't set, Webpack will traverse all files within the base directory. This can hurt performance! It is a good idea to set up include always.
           include: PATHS.app
         },
-        
+
         // Set up jsx. This accepts js too thanks to RegExp
         {
           test: /\.jsx?$/,
@@ -55,7 +55,11 @@ module.exports = {
     new HtmlwebpackPlugin({
 
       // Becomes the title tag inside head element
-      title: 'Kanban app'
+      //title: 'Kanban app'
+
+      template: 'node_modules/html-webpack-template/index.html',
+      title: 'Kanban app',
+      appMountId: 'app'
     }),
 
     new webpack.HotModuleReplacementPlugin()
