@@ -17,8 +17,13 @@ module.exports = {
     path: './build',
     filename: 'bundle.js'
   },
+
   plugins: [
+
+    // Creates index.hmtl in the build folder
     new HtmlwebpackPlugin({
+
+      // Becomes the title tag inside head element
       title: 'Kanban app'
     })
   ]
