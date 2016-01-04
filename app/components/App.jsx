@@ -26,6 +26,16 @@ export default class App extends React.Component {
 
   }
 
+  addNote = () => {
+    this.setState({
+      notes: this.state.notes.concat([{
+        id: uuid.v4(),
+        task: 'New task'
+      }])
+    });
+  }
+
+
   render() {
 
     const notesArray = this.state.notes;
@@ -33,6 +43,7 @@ export default class App extends React.Component {
 	  // Pass notes data as prop 
     return (
       <div>
+       	<button className="add-note" onClick={this.addNote}>+</button>
         <Notes notes={notesArray} />
       </div>
     );
