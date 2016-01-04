@@ -1,8 +1,9 @@
 import uuid from 'node-uuid';
-import React, {Component} from 'react';
-import Note from './Note.jsx';
+import React from 'react';
+import Notes from './Notes.jsx';
 
-const notes = [
+
+const notesArray = [
   {
     id: uuid.v4(),
     task: 'Learn Webpack'
@@ -17,19 +18,15 @@ const notes = [
   }
 ];
 
-export default class App extends Component {
+// Main App Component
+export default class App extends React.Component {
   render() {
+
+	  // Pass notes data as prop 
     return (
       <div>
-        <ul>{notes.map(this.renderNote)}</ul>
+        <Notes notes={notesArray} />
       </div>
-    );
-  }
-  renderNote(note) {
-    return (
-      <li key={note.id}>
-        <Note task={note.task} />
-      </li>
     );
   }
 }
