@@ -1,4 +1,5 @@
 //var path = require('path');
+var webpack = require('webpack');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 
 // const PATHS = {
@@ -25,6 +26,23 @@ module.exports = {
 
       // Becomes the title tag inside head element
       title: 'Kanban app'
-    })
-  ]
+    }),
+
+    new webpack.HotModuleReplacementPlugin()
+  ],
+
+  devServer: {
+    historyApiFallback: true,
+    hot: true,
+    inline: true,
+    progress: true,
+
+    // Display only errors to reduce the amount of output.
+    stats: 'errors-only',
+
+    // Parse host and port from env so this is easy to customize.
+    host: process.env.HOST,
+    port: process.env.PORT
+  }
+
 };
