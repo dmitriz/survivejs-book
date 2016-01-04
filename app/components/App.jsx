@@ -35,16 +35,29 @@ export default class App extends React.Component {
     });
   }
 
+ 	editNote = (id, task) => {
+    const notes = this.state.notes.map((note) => {
+      if(note.id === id) {
+        note.task = task;
+      }
+
+      return note;
+    });
+
+    this.setState({notes});
+  }
+
 
   render() {
 
-    const notesArray = this.state.notes;
+    const notes = this.state.notes;
 
-	  // Pass notes data as prop 
+	  // Pass notes data as Prop 
+	  // onEdit is our custom Prop
     return (
       <div>
        	<button className="add-note" onClick={this.addNote}>+</button>
-        <Notes notes={notesArray} />
+        <Notes notes={notes} onEdit={this.editNote} />
       </div>
     );
   }
