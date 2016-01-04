@@ -3,6 +3,7 @@ var webpack = require('webpack');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 
 const PATHS = {
+  //app: './app'
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build')
 };
@@ -11,7 +12,7 @@ module.exports = {
 
   // Entry accepts a path or an object of entries.
   // The build chapter contains an example of the latter.
-  entry: './app',
+  entry: PATHS.app,
 
   // All outputs are in build
   output: {
@@ -35,7 +36,7 @@ module.exports = {
           loaders: ['style', 'css'],
 
           // Include accepts either a path or an array of paths. If include isn't set, Webpack will traverse all files within the base directory. This can hurt performance! It is a good idea to set up include always.
-          include: PATHS.app
+          //include: PATHS.app
         },
 
         // Set up jsx. This accepts js too thanks to RegExp
@@ -43,6 +44,7 @@ module.exports = {
           test: /\.jsx?$/,
           loaders: ['babel'],
           include: PATHS.app
+          //include: __dirname
         }
 
       ]
