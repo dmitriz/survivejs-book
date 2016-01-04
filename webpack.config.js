@@ -1,11 +1,11 @@
-//var path = require('path');
+var path = require('path');
 var webpack = require('webpack');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 
-// const PATHS = {
-//   app: path.join(__dirname, 'app'),
-//   build: path.join(__dirname, 'build')
-// };
+const PATHS = {
+  app: path.join(__dirname, 'app'),
+  build: path.join(__dirname, 'build')
+};
 
 module.exports = {
 
@@ -19,6 +19,36 @@ module.exports = {
     filename: 'bundle.js'
   },
 
+  // Add resolve.extensions. '' is needed to allow imports without an extension.
+  // Note the .'s before extensions!!! Without those matching will fail.
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
+
+
+  module: {
+      loaders: [
+        {
+
+          // Test expects a RegExp! Note the slashes!
+          test: /\.css$/,
+          loaders: ['style', 'css'],
+
+          // Include accepts either a path or an array of paths. If include isn't set, Webpack will traverse all files within the base directory. This can hurt performance! It is a good idea to set up include always.
+          include: PATHS.app
+        },
+        
+        // Set up jsx. This accepts js too thanks to RegExp
+        {
+          test: /\.jsx?$/,
+          loaders: ['babel'],
+          include: PATHS.app
+        }
+
+      ]
+    },
+
+
   plugins: [
 
     // Creates index.hmtl in the build folder
@@ -30,6 +60,8 @@ module.exports = {
 
     new webpack.HotModuleReplacementPlugin()
   ],
+
+  devtool: 'eval-source-map',
 
   devServer: {
     historyApiFallback: true,
