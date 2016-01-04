@@ -59,6 +59,8 @@ module.exports = {
 
       template: 'node_modules/html-webpack-template/index.html',
       title: 'Kanban app',
+
+      // Main DOM Element Id to attach the App
       appMountId: 'app'
     }),
 
