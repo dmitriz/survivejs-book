@@ -1,6 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
-var HtmlwebpackPlugin = require('html-webpack-plugin');
+var HtmlwebpackPlugin = require('html-webpack-plugin'); // auto-generate index.html from template
 
 const PATHS = {
   //app: './app'
@@ -42,11 +42,12 @@ module.exports = {
         // Set up jsx. This accepts js too thanks to RegExp
         {
           test: /\.jsx?$/,
-          loaders: ['babel'],
-          include: PATHS.app
-          //include: __dirname
+          loader: 'babel',
+          include: PATHS.app,
+          query: {
+            presets: ['es2015']
+          }
         }
-
       ]
     },
 
@@ -58,7 +59,6 @@ module.exports = {
 
       // Becomes the title tag inside head element
       //title: 'Kanban app'
-
       template: 'node_modules/html-webpack-template/index.html',
       title: 'Kanban app',
 
