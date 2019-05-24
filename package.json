@@ -24,7 +24,7 @@
     "babel-preset-es2015": "6.24.1",
     "babel-preset-react": "6.24.1",
     "babel-preset-survivejs-kanban": "0.3.3",
-    "css-loader": "0.28.11",
+    "css-loader": "2.1.1",
     "html-webpack-plugin": "1.7.0",
     "html-webpack-template": "2.5.2",
     "react-transform-hmr": "1.0.4",
